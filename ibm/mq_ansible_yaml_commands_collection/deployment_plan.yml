@@ -1,0 +1,21 @@
+apiVersion: wazideploy.ibm.com/v1
+kind: DeploymentPlan
+metadata:
+  name: MQSample
+  description: MQSample
+  version: 1.0.84
+  annotations:
+    creationTimestamp: 20220811.141603.891
+activities:
+- name: MQCommand
+  description:
+  properties: []
+  actions:
+  - name: MQCommand
+    description:
+    properties: []
+    steps:
+    - name: MQCommand
+      description:
+      properties: []
+      artifacts: []

@@ -1,0 +1,19 @@
+#*******************************************************************************
+# Licensed Materials - Property of IBM
+# (c) Copyright IBM Corp. 2023. All Rights Reserved.
+#
+# Note to U.S. Government Users Restricted Rights:
+# Use, duplication or disclosure restricted by GSA ADP Schedule
+# Contract with IBM Corp.
+#*******************************************************************************
+---
+- name: "[{{current_step_name}}]"
+  block:
+  - import_role:
+      name: runMQCmds
+    vars:
+      # For Wazi Deploy this file must come from the package download from artifactory
+      cmds_file_name: 'cmds_files/mq_cfstruct_yaml_cmds.yml'
+      # All MQ params like qmgr_name should not be harcoded here but declared in other
+      # Ansible envrironment files. This task should be generic.      
+      qmgr_name: MQ08
