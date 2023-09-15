@@ -1,0 +1,42 @@
+---
+apiVersion: deploy.ibm.com/v1
+kind: DeploymentMethod
+metadata:
+  name: "MQ Series"
+  version: "1.0.0"
+  description: |
+    This deployment method can be use for the deployment of an MQ Series application.
+  annotations:
+    deployVersion: "1.0.0"
+    
+#default_tags:
+#  - deploy_modules
+
+activities:
+  - name: PACKAGE
+    description: |
+      This activity handle the package
+    actions:
+        - name: PACKAGE
+          steps:
+          - name: PACKAGE
+            properties:
+            - key: "is_remote"
+              value: False
+    tags:
+    - always
+  - name: MQCommand
+    actions:
+    - name: MQCommand
+      steps:
+      - name: MQCommand
+        properties:
+        - key: "path_filter"
+          value: "cmds_files/.*"
+        - key: "template"
+          value: "mq_command"
+    types:
+      - name: 'yml'
+    is_artifact: True
+    tags:
+    - mq_command

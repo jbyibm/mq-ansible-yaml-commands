@@ -1,0 +1,20 @@
+#*******************************************************************************
+# Licensed Materials - Property of IBM
+# (c) Copyright IBM Corp. 2023. All Rights Reserved.
+#
+# Note to U.S. Government Users Restricted Rights:
+# Use, duplication or disclosure restricted by GSA ADP Schedule
+# Contract with IBM Corp.
+#*******************************************************************************
+---
+- name: "[{{current_step_name}}]"
+  block:
+  - name: "[{{current_step_name}}]: runMQCmds"
+    include_role:
+      name: runMQCmds
+    with_items: "{{ wd_step['artifacts'] }}"
+    vars:
+      cmds_file_name: "{{ wd_deploy_dir_local }}/{{ item | json_query (\"properties[?key == 'path'].value\") | first }}"
+      # All MQ params like qmgr_name should not be harcoded here but declared in other
+      # Ansible envrironment files. This task should be generic.
+      qmgr_name: MQ08
