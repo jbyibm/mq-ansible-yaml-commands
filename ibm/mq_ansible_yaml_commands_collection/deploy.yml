@@ -13,7 +13,7 @@
    wd_env:
      local_dir: "/tmp/wazideploy"
      uss_dir: "/tmp/wazideploy"
-   wd_no_log_flag: False
+   wd_log: False
   serial: "{{ wd_serial if wd_serial is defined else 5 }}"
   tasks:
       - import_role:
